@@ -12,6 +12,8 @@ docker compose build
 ```bash
 docker compose up
 ```
+you should now have a running container with the name 'final_project_dev_1'
+
 3. open a new terminal and connect to the 'dev' container
 ```bash
 docker exec -it final_project_dev_1 bash
@@ -23,7 +25,7 @@ rosdep install --from-paths src --ignore-src -r -y
 ```
 5. Try to build the ros packages
 ```bash
-catkin build
+catkin build -p2 -j8 --mem-limit 50%
 ```
 6. Add the sourcing of your workspace to your .bashrc
 ```bash
