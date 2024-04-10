@@ -6,11 +6,11 @@ Codebase for the final project of DTU's [Autonomous Marine Robotics course](http
 From the root of the project, run the following commands:
 1. build the docker images
 ```bash
-docker-compose build
+docker compose build
 ```
 2. launch the 'dev' container
 ```bash
-docker-compose up
+docker compose up
 ```
 3. open a new terminal and connect to the 'dev' container
 ```bash
@@ -24,4 +24,19 @@ rosdep install --from-paths src --ignore-src -r -y
 5. Try to build the ros packages
 ```bash
 catkin build
+```
+6. Add the sourcing of your workspace to your .bashrc
+```bash
+echo "source ${HOME}/ros_ws/devel/setup.bash" >> ~/.bashrc
+```
+
+# Launching the simulation
+run the following command **inside** the 'dev' container
+1. Enter the dev container
+```bash
+docker exec -it final_project_dev_1 bash
+```
+2. Launch the simulation
+```bash
+roslaunch bluerov2_gazebo start_pid_demo.launch
 ```
