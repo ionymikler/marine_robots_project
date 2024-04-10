@@ -40,3 +40,6 @@ docker exec -it final_project_dev_1 bash
 ```bash
 roslaunch bluerov2_gazebo start_pid_demo.launch
 ```
+
+# Additional information
+- Some useful aliases are defined in the `utils/aliases.sh` file. You can source it by running `source utils/aliases.sh` **outside** the container. **Important** inside that file, the `base_dir` variable should be set to the path of the project in the container.
