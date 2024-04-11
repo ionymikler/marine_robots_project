@@ -1,3 +1,8 @@
+# vscode stuff
+.vscode/
+.devcontainer/
+.github/
+
 # build artifacts
 ros_ws/.catkin_tools/
 ros_ws/build/

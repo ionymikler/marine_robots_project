@@ -21,7 +21,7 @@ docker exec -it final_project_dev_1 bash
 4. Install the dependencies of the base ros packages
 ```bash
 cd ros_ws
-rosdep install --from-paths src --ignore-src -r -y
+rosdep install --from-paths src --ignore-src -y
 ```
 5. Try to build the ros packages
 ```bash
