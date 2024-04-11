@@ -34,7 +34,7 @@
 
     <!-- Add the sphere_target vehicle to the world  -->
     <arg name="x_target" default="1.0"/>
-    <arg name="y_target" default="1.0"/>
+    <arg name="y_target" default="0.0"/>
 
     <include file="$(find sphere_target_description)/launch/upload.launch">
         <arg name="x" default="$(arg x_target)"/>
