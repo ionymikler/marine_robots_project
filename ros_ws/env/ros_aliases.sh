@@ -6,4 +6,4 @@
 alias ros='source /opt/ros/noetic/setup.bash'
 alias ws='source ./devel/setup.bash'
 
-src_ws
+ws
