@@ -3,5 +3,7 @@
 # Created on: $(date +'%Y-%m-%d')
 
 # ROS Aliases
-alias src_ros='source /opt/ros/noetic/setup.bash'
-alias src_ws='source ./devel/setup.bash'
+alias ros='source /opt/ros/noetic/setup.bash'
+alias ws='source ./devel/setup.bash'
+
+src_ws
