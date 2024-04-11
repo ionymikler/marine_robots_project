@@ -1,0 +1,19 @@
+<launch>
+    <!-- SIMULATION -->
+    <!-- ARGUMENTS -->
+    <include file="$(find project_base)/launch/simulation_base.launch">
+    </include>
+
+    <!-- PERCEPTION -->
+    <!-- ARGUMENTS -->
+
+    <!-- CONTROL -->
+    <!-- ARGUMENTS -->
+    
+    <!-- OTHERS -->
+    <!-- ARGUMENTS -->
+
+    <!-- Start RViz  -->
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find project_base)/rviz/video_servoing.rviz"/>
+
+</launch>
