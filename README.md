@@ -16,20 +16,31 @@ you should now have a running container with the name 'final_project_dev_1'
 
 3. open a new terminal and connect to the 'dev' container
 ```bash
-docker exec -it final_project_dev_1 bash
+docker exec -it marine_robots_project_dev-1 bash
 ```
 4. Install the dependencies of the base ros packages
 ```bash
 cd ros_ws
 rosdep install --from-paths src --ignore-src -y
 ```
-5. Try to build the ros packages
+5. Source before continuing
+```bash
+cd ../../opt/ros/noetic
+source setup.bash
+source local_setup.bash
+cd ../../../home/ros_ws
+```
+6. Try to build the ros packages
 ```bash
 catkin build -p2 -j8 --mem-limit 50%
 ```
-6. Add the sourcing of your workspace to your .bashrc
+7. Add the sourcing of your workspace to your .bashrc
 ```bash
 echo "source ${HOME}/ros_ws/devel/setup.bash" >> ~/.bashrc
+```
+8. Source the workspace
+```bash
+source devel/setup.bash
 ```
 
 # Launching the simulation
