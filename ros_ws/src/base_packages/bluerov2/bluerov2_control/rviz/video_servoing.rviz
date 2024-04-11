@@ -3,9 +3,7 @@ Panels:
     Help Height: 0
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /RobotModel1
-        - /TF1
+      Expanded: ~
       Splitter Ratio: 0.577102780342102
     Tree Height: 452
   - Class: rviz/Selection
@@ -51,7 +49,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
+    - Alpha: 0.20000000298023224
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -315,108 +313,6 @@ Visualization Manager:
         {}
       Queue Size: 100
       Value: true
-    - Class: rviz/Image
-      Enabled: false
-      Image Topic: /bluerov2/camera_front/camera_image
-      Max Value: 1
-      Median window: 5
-      Min Value: 0
-      Name: Image
-      Normalize Range: true
-      Queue Size: 1
-      Transport Hint: compressed
-      Unreliable: false
-      Value: false
-    - Alpha: 1
-      Arrow Width: 0.5
-      Class: rviz/WrenchStamped
-      Enabled: false
-      Force Arrow Scale: 0.05000000074505806
-      Force Color: 204; 51; 51
-      Hide Small Values: true
-      History Length: 1
-      Name: WrenchStamped
-      Queue Size: 10
-      Topic: /bluerov2/thrusters/0/thrust_wrench
-      Torque Arrow Scale: 2
-      Torque Color: 204; 204; 51
-      Unreliable: false
-      Value: false
-    - Alpha: 1
-      Arrow Width: 0.5
-      Class: rviz/WrenchStamped
-      Enabled: false
-      Force Arrow Scale: 0.05000000074505806
-      Force Color: 204; 51; 51
-      Hide Small Values: true
-      History Length: 1
-      Name: WrenchStamped
-      Queue Size: 10
-      Topic: /bluerov2/thrusters/1/thrust_wrench
-      Torque Arrow Scale: 2
-      Torque Color: 204; 204; 51
-      Unreliable: false
-      Value: false
-    - Alpha: 1
-      Arrow Width: 0.5
-      Class: rviz/WrenchStamped
-      Enabled: false
-      Force Arrow Scale: 0.05000000074505806
-      Force Color: 204; 51; 51
-      Hide Small Values: true
-      History Length: 1
-      Name: WrenchStamped
-      Queue Size: 10
-      Topic: /bluerov2/thrusters/2/thrust_wrench
-      Torque Arrow Scale: 2
-      Torque Color: 204; 204; 51
-      Unreliable: false
-      Value: false
-    - Alpha: 1
-      Arrow Width: 0.5
-      Class: rviz/WrenchStamped
-      Enabled: false
-      Force Arrow Scale: 0.05000000074505806
-      Force Color: 204; 51; 51
-      Hide Small Values: true
-      History Length: 1
-      Name: WrenchStamped
-      Queue Size: 10
-      Topic: /bluerov2/thrusters/3/thrust_wrench
-      Torque Arrow Scale: 2
-      Torque Color: 204; 204; 51
-      Unreliable: false
-      Value: false
-    - Alpha: 1
-      Arrow Width: 0.5
-      Class: rviz/WrenchStamped
-      Enabled: false
-      Force Arrow Scale: 0.05000000074505806
-      Force Color: 204; 51; 51
-      Hide Small Values: true
-      History Length: 1
-      Name: WrenchStamped
-      Queue Size: 10
-      Topic: /bluerov2/thrusters/4/thrust_wrench
-      Torque Arrow Scale: 2
-      Torque Color: 204; 204; 51
-      Unreliable: false
-      Value: false
-    - Alpha: 1
-      Arrow Width: 0.5
-      Class: rviz/WrenchStamped
-      Enabled: false
-      Force Arrow Scale: 0.05000000074505806
-      Force Color: 204; 51; 51
-      Hide Small Values: true
-      History Length: 1
-      Name: WrenchStamped
-      Queue Size: 10
-      Topic: /bluerov2/thrusters/5/thrust_wrench
-      Torque Arrow Scale: 2
-      Torque Color: 204; 204; 51
-      Unreliable: false
-      Value: false
     - Alpha: 0.699999988079071
       Class: rviz/Map
       Color Scheme: map
@@ -566,7 +462,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.8539226055145264
+      Distance: 1.8238565921783447
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -582,7 +478,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3903975784778595
+      Pitch: 0.460397332906723
       Target Frame: bluerov2/base_link
       Yaw: 0.9453961849212646
     Saved: ~
@@ -592,9 +488,7 @@ Window Geometry:
   Height: 1016
   Hide Left Dock: false
   Hide Right Dock: true
-  Image:
-    collapsed: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000027000000385fc020000000bfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000014000001ff000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650000000294000001050000001600fffffffb0000000a0049006d006100670065010000017d000002210000000000000000fb0000001800660072006f006e0074005f00630061006d0065007200610100000219000001800000001600ffffff00000001000001c100000385fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000001400000385000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007380000003efc0100000002fb0000000800540069006d00650100000000000007380000030700fffffffb0000000800540069006d00650100000000000004500000000000000000000004c20000038500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000027000000385fc020000000bfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000014000001ff000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650000000294000001050000000000000000fb0000000a0049006d006100670065010000017d000002210000000000000000fb0000001800660072006f006e0074005f00630061006d0065007200610100000219000001800000001600ffffff00000001000001c100000385fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000001400000385000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007380000003efc0100000002fb0000000800540069006d00650100000000000007380000030700fffffffb0000000800540069006d00650100000000000004500000000000000000000004c20000038500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
