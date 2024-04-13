@@ -32,6 +32,7 @@ class MoveNode():
             start_time = rospy.Time.now()
             while (rospy.Time.now() - start_time).to_sec() < self.t_move:
                 self.pub.publish(twist_msg)
+                rospy.loginfo("Published Twist()")
                 self.rate.sleep()
 
             # Start turning
@@ -47,6 +48,7 @@ class MoveNode():
             pose_turned = pose_init
             while (abs(pose_turned - pose_init)) <= 90.0:
                 self.pub.publish(twist_msg)
+                rospy.loginfo("Published Twist()")
                 r = R.from_quat([self.position.pose.pose.orientation.x, 
                              self.position.pose.pose.orientation.y, 
                              self.position.pose.pose.orientation.z, 

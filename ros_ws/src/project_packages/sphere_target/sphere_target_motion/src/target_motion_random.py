@@ -23,16 +23,21 @@ def move_publisher():
         start_time = rospy.Time.now()
         while (rospy.Time.now() - start_time).to_sec() < random.random()*t_move:
             pub.publish(twist_msg)
+            rospy.loginfo("Published Twist()")
             rate.sleep()
 
         # Change linear velocity to -speed
         twist_msg.linear.x = 0
-        twist_msg.angular.z = turnrate
+        if random.randint(0,1) == 1:
+            twist_msg.angular.z = turnrate
+        else:
+            twist_msg.angular.z = -turnrate
 
         # Publish negative velocity for T/2 seconds
         start_time = rospy.Time.now()
         while (rospy.Time.now() - start_time).to_sec() < random.random()*8:
             pub.publish(twist_msg)
+            rospy.loginfo("Published Twist()")
             rate.sleep()
 
 if __name__ == '__main__':

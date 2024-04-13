@@ -20,6 +20,7 @@ def move_publisher():
         start_time = rospy.Time.now()
         while (rospy.Time.now() - start_time).to_sec() < t_move:
             pub.publish(twist_msg)
+            rospy.loginfo("Published Twist()")
             rate.sleep()
 
         # Change linear velocity to -speed
@@ -29,6 +30,7 @@ def move_publisher():
         start_time = rospy.Time.now()
         while (rospy.Time.now() - start_time).to_sec() < t_move:
             pub.publish(twist_msg)
+            rospy.loginfo("Published Twist()")
             rate.sleep()
 
 if __name__ == '__main__':
