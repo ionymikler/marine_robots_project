@@ -11,3 +11,4 @@ ros_ws/install/
 ros_ws/logs/
 
 **/*.pyc
+**/*.bag
