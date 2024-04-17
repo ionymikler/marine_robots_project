@@ -29,7 +29,10 @@ catkin_package(
   CATKIN_DEPENDS roscpp std_msgs geometry_msgs message_runtime  # Add 'message_runtime' for message generation
 )
 
-catkin_install_python(PROGRAMS src/square_wave_surge_command.py
+catkin_install_python(PROGRAMS 
+  src/target_motion_line.py
+  src/target_motion_square.py
+  src/target_motion_random.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

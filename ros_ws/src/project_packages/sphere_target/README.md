@@ -16,7 +16,13 @@ roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=sphere_target
 
 ## Move Sphere Target via ROS Node
 
-In a new terminal execute (remember to source first):
+In a new terminal execute one of the following commands(remember to source first):
 ```bash
-rosrun sphere_target_motion square_wave_surge_command.py
+rosrun sphere_target_motion target_motion_line.py
+```
+```bash
+rosrun sphere_target_motion target_motion_square.py
+```
+```bash
+rosrun sphere_target_motion target_motion_random.py
 ```
