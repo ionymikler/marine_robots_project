@@ -42,6 +42,10 @@ def paint_circles_in_image(image: np.ndarray, circles: np.ndarray, n:int=1)->np.
 
     return image
 
+def find_circles_in_image(image: np.ndarray)->np.ndarray:
+    circles = detect_circles(image)
+    return circles, paint_circles_in_image(image, circles, n=3)
+
 class TargetDetectorNode:
     def __init__(self):
         rospy.init_node("target_detector")
@@ -66,12 +70,10 @@ class TargetDetectorNode:
     def process_image(self, image: np.ndarray)->np.ndarray:
         rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
-        # TODO: take this functions to another module. Problem with setup.py
-        circles = detect_circles(rgb)
+        circles, segmented_img = find_circles_in_image(rgb) # TODO: take this functions to another module. Problem with setup.py
         rospy.loginfo_throttle(0.5,f"circles detected: {circles.shape}")
-        rgb = paint_circles_in_image(rgb, circles, n=3)
 
-        return rgb
+        return segmented_img
 
 
 if __name__ == "__main__":

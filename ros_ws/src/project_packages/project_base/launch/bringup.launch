@@ -1,11 +1,18 @@
 <launch>
     <!-- SIMULATION -->
     <!-- ARGUMENTS -->
-    <include file="$(find project_base)/launch/simulation_base.launch">
-    </include>
+    <arg name="simulation" default="true" />
+
+    <!-- NODES and LAUNCH FILES --> 
+    <include file="$(find project_base)/launch/simulation_base.launch" if="$(arg simulation)">
+        </include>
 
     <!-- PERCEPTION -->
     <!-- ARGUMENTS -->
+    <!-- NODES and LAUNCH FILES -->
+        <!-- Start visual_detection.py node from target_tracking package -->
+    <node name="visual_detection" pkg="target_tracking" type="visual_detection.py" output="screen">
+        </node>    
 
     <!-- CONTROL -->
     <!-- ARGUMENTS -->
