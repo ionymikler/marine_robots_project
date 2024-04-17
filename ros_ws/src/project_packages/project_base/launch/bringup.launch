@@ -2,25 +2,20 @@
     <!-- SIMULATION -->
     <!-- ARGUMENTS -->
     <arg name="simulation" default="true" />
+    <arg name="stack" default="true" />
 
     <!-- NODES and LAUNCH FILES --> 
     <include file="$(find project_base)/launch/simulation_base.launch" if="$(arg simulation)">
         </include>
 
-    <!-- TODO: make launch for our own stack for ease of launch -->
-    <!-- PERCEPTION -->
-    <!-- ARGUMENTS -->
-    <!-- NODES and LAUNCH FILES -->
-        <!-- Start visual_detection.py node from target_tracking package -->
-    <node name="visual_detection" pkg="target_tracking" type="visual_detection.py" output="screen">
-        </node>    
-
-    <!-- CONTROL -->
-    <!-- ARGUMENTS -->
+    <!-- Project stack -->
+    <include if="$(arg stack)" file="$(find project_base)/launch/stack.launch">
+        
+    </include>
     
     <!-- OTHERS -->
     <!-- ARGUMENTS -->
-    <arg name="rviz" default="false"/>
+    <arg name="rviz" default="true"/>
     <arg name="image_view" default="false"/>
 
     <!-- Start RViz  -->

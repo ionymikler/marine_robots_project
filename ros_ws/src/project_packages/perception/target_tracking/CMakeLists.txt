@@ -10,7 +10,6 @@ project(target_tracking)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   sensor_msgs
-
 )
 
 ## System dependencies are found with CMake's conventions

@@ -1,0 +1,13 @@
+<launch>
+    <!-- PERCEPTION -->
+    <!-- ARGUMENTS -->
+    <!-- NODES and LAUNCH FILES -->
+    <node name="visual_detection" pkg="target_tracking" type="visual_detection.py" output="screen">
+        </node>    
+
+    <!-- CONTROL -->
+    <!-- ARGUMENTS -->
+    
+    <!-- OTHERS -->
+    <!-- ARGUMENTS -->
+</launch>
