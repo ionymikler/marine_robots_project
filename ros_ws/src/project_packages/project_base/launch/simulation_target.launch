@@ -1,0 +1,31 @@
+<launch>
+    <arg name="use_ned_frame" default="false"/>
+    
+    <!-- Initialize the Gazebo world  -->
+    <arg name="gz_gui" default="true"/>
+    <include file="$(find bluerov2_description)/launch/bridge.launch">
+        <arg name="gui" default="$(arg gz_gui)"/>
+    </include>
+
+    <!-- Add the sphere_target vehicle to the world  -->
+    <arg name="x_target" default="1.0"/>
+    <arg name="y_target" default="1.0"/>
+    <arg name="z" default="-34.5"/>
+    <arg name="yaw" default="0.0"/>
+
+
+    <include file="$(find sphere_target_description)/launch/upload.launch">
+        <arg name="x" default="$(arg x_target)"/>
+        <arg name="y" default="$(arg y_target)"/>
+        <arg name="z" default="$(arg z)"/>
+        <arg name="yaw" default="$(arg yaw)"/>
+        <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+    </include>
+
+    <include file="$(find sphere_target_control)/launch/rov_pid_controller.launch"> 
+        <arg name="uuv_name" value="sphere_target"/> 
+        <arg name="model_name" value="sphere_target"/> 
+        <arg name="use_ned_frame" value="$(arg use_ned_frame)"/> 
+    </include>
+    
+</launch>

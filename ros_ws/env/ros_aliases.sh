@@ -4,6 +4,6 @@
 
 # ROS Aliases
 alias ros='source /opt/ros/noetic/setup.bash'
-alias ws='source /home/iony/ros_ws/devel/setup.bash'
+alias rsrc='source ./devel/setup.bash'
 
-ws
+rsrc

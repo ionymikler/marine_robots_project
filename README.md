@@ -51,7 +51,7 @@ docker exec -it final_project_dev_1 bash
 ```
 2. Launch the simulation
 ```bash
-roslaunch project_base bringup.launch
+roslaunch project_base bringup.launch [simulation:=true]
 ```
 
 # Additional information
