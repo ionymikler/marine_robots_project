@@ -51,7 +51,7 @@ docker exec -it final_project_dev_1 bash
 ```
 2. Launch the simulation
 ```bash
-roslaunch bluerov2_gazebo start_pid_demo.launch
+roslaunch project_base bringup.launch [simulation:=true]
 ```
 
 # Additional information

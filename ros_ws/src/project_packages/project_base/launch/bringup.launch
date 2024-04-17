@@ -7,6 +7,7 @@
     <include file="$(find project_base)/launch/simulation_base.launch" if="$(arg simulation)">
         </include>
 
+    <!-- TODO: make launch for our own stack for ease of launch -->
     <!-- PERCEPTION -->
     <!-- ARGUMENTS -->
     <!-- NODES and LAUNCH FILES -->
@@ -19,8 +20,11 @@
     
     <!-- OTHERS -->
     <!-- ARGUMENTS -->
+    <arg name="rviz" default="false"/>
+    <arg name="image_view" default="false"/>
 
     <!-- Start RViz  -->
-    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find project_base)/rviz/video_servoing.rviz"/>
-
+    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find project_base)/rviz/video_servoing.rviz"/>
+    <!-- start image_view node -->
+    <node if="$(arg image_view)" name="image_view" pkg="image_view" type="image_view" output="screen" args="image:=/camera/image_raw"/>
 </launch>
