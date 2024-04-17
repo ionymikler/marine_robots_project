@@ -16,6 +16,8 @@ class SpherePose():
         self.y_pos = 0
         self.z_pos = 0
 
+        # camera parameters: https://bluerobotics.com/store/sensors-cameras/cameras/cam-usb-low-light-r1/
+
         self.focal_length = 2.97/0.0028 # unit is px (f=2.97mm, px=2.8um)
         self.px_width_base = 1920
         self.px_height_base = 1080
