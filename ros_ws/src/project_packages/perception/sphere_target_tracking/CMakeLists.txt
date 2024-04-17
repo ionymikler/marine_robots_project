@@ -30,7 +30,7 @@ catkin_package(
 )
 
 catkin_install_python(PROGRAMS 
-  src/target_tracking.py
+  src/sphere_target_tracking.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

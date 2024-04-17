@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>sphere_target_tracking/name>
+  <name>sphere_target_tracking</name>
   <version>0.0.1</version>
   <description>The sphere_target_tracking package</description>
 
