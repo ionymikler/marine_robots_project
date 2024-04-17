@@ -28,8 +28,6 @@ class SpherePose():
         circles= self.detect_circles(img)
         if circles.shape[0] > 0:
             px_width, px_height, radius = circles[0,0]
-            print(px_width)
-            print(px_height)
             px_width = px_width - (self.px_width_base/2)
             px_height = px_height - (self.px_height_base/2)
             diameter = 2*radius
