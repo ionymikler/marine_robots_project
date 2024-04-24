@@ -35,7 +35,7 @@ class TargetDetectorNode:
         rgb = cv.cvtColor(image_og, cv.COLOR_BGR2RGB)
 
         targets, error_h, error_v = self.find_target(rgb)
-        rospy.loginfo(f"Errors: h={error_h}, v={error_v}")
+        rospy.loginfo_throttle(0.5, f"Errors: h={error_h}, v={error_v}")
         # Publish errors
         self.horizontal_error_pub.publish(error_h)
         self.vertical_error_pub.publish(error_v)
