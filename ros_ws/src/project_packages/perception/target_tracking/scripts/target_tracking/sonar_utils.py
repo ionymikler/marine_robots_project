@@ -28,13 +28,14 @@ class SonarProcessor():
         # 3. get 3D mean and std of in-zone
         _pc2_msg = self.laser_projector.projectLaser(sonar_msg)
         _oc_np:np.ndarray = ros_numpy.numpify(_pc2_msg) # x,y,z,intensity
-        oc = np.array([[p[0], p[1]] for p in _oc_np])
+        # oc = np.array([[p[0], p[1]] for p in _oc_np])
 
         # filter all points that are not in the zone
-        oc = oc[(oc[:,0] > self.x_min) & (oc[:,0] < self.x_max) & (oc[:,1] > self.y_min) & (oc[:,1] < self.y_max)]
-        print(oc.mean())
+        # oc = oc[(oc[:,0] > self.x_min) & (oc[:,0] < self.x_max) & (oc[:,1] > self.y_min) & (oc[:,1] < self.y_max)]
+        print(len(_oc_np))
+        print(_oc_np.shape)
         # NOTE: Processing this further is a lot of work. stopping for now
-        print(oc[-1])
+        print(_oc_np[-1])
         
 
         return _pc2_msg
