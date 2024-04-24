@@ -18,8 +18,7 @@
     </include>
 
     <!-- Add the BlueROV2 vehicle to the world  -->
-    <!-- changed it to bluerov2_perception form bluerov2_description for simulated sonar data  -->
-    <include file="$(find bluerov2_perception)/launch/upload.launch">
+    <include file="$(find bluerov2_description)/launch/upload.launch">
         <arg name="x" default="$(arg x)"/>
         <arg name="y" default="$(arg y)"/>
         <arg name="z" default="$(arg z)"/>
