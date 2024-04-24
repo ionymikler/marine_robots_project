@@ -40,10 +40,10 @@
   <!-- <xacro:include filename="$(find bluerov2_description)/urdf/_d435.urdf.xacro" />
   <sensor_d435 parent="${namespace}/base_link">
   </sensor_d435> -->
-  <!-- xacro:include filename="$(find bluerov2_perception)/urdf/_d435.urdf.xacro" />
+  <xacro:include filename="$(find bluerov2_perception)/urdf/_d435.urdf.xacro" />
   <sensor_d435 parent="${namespace}/base_link">
     <origin xyz="0.2 0 0" rpy="0 0 0"/>
-  </sensor_d435-->
+  </sensor_d435>
 
 <!--
   <xacro:macro name="underwater_camera_plugin_macro"
