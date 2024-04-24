@@ -3,9 +3,10 @@ Panels:
     Help Height: 0
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /TF1/Frames1
       Splitter Ratio: 0.577102780342102
-    Tree Height: 140
+    Tree Height: 471
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -23,7 +24,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: camera_from_compressed
+    SyncSource: processed_image
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -48,6 +49,24 @@ Visualization Manager:
       Plane: XY
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 0.5
+      Cell Size: 0.20000000298023224
+      Class: rviz/Grid
+      Color: 0; 255; 0
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: baselink grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: bluerov2/base_link
       Value: true
     - Alpha: 1
       Class: rviz/RobotModel
@@ -91,6 +110,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        bluerov2/sonarforward_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         bluerov2/thruster_0:
           Alpha: 1
           Show Axes: false
@@ -127,7 +151,7 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: true
-    - Alpha: 1
+    - Alpha: 0.20000000298023224
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -190,12 +214,76 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Filter (blacklist): ""
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        bluerov2/base_footprint:
+          Value: false
+        bluerov2/base_link:
+          Value: false
+        bluerov2/base_link_ned:
+          Value: false
+        bluerov2/base_stabilized:
+          Value: false
+        bluerov2/camera_front_link:
+          Value: false
+        bluerov2/camera_front_link_optical:
+          Value: false
+        bluerov2/gps_link:
+          Value: false
+        bluerov2/imu_link:
+          Value: false
+        bluerov2/pose_sensor_link_default:
+          Value: false
+        bluerov2/pressure_link:
+          Value: false
+        bluerov2/sonarforward_link:
+          Value: true
+        bluerov2/thruster_0:
+          Value: false
+        bluerov2/thruster_1:
+          Value: false
+        bluerov2/thruster_2:
+          Value: false
+        bluerov2/thruster_3:
+          Value: false
+        bluerov2/thruster_4:
+          Value: false
+        bluerov2/thruster_5:
+          Value: false
+        sphere_target/base_footprint:
+          Value: false
+        sphere_target/base_link:
+          Value: false
+        sphere_target/base_link_ned:
+          Value: false
+        sphere_target/base_stabilized:
+          Value: false
+        sphere_target/gps_link:
+          Value: false
+        sphere_target/imu_link:
+          Value: false
+        sphere_target/pose_sensor_link_default:
+          Value: false
+        sphere_target/pressure_link:
+          Value: false
+        sphere_target/thruster_0:
+          Value: false
+        sphere_target/thruster_1:
+          Value: false
+        sphere_target/thruster_2:
+          Value: false
+        sphere_target/thruster_3:
+          Value: false
+        sphere_target/thruster_4:
+          Value: false
+        sphere_target/thruster_5:
+          Value: false
+        world:
+          Value: false
       Marker Alpha: 1
       Marker Scale: 1.5
       Name: TF
@@ -203,9 +291,64 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        world:
+          bluerov2/base_footprint:
+            bluerov2/base_stabilized:
+              bluerov2/base_link:
+                bluerov2/base_link_ned:
+                  {}
+                bluerov2/camera_front_link:
+                  bluerov2/camera_front_link_optical:
+                    {}
+                bluerov2/gps_link:
+                  {}
+                bluerov2/imu_link:
+                  {}
+                bluerov2/pose_sensor_link_default:
+                  {}
+                bluerov2/pressure_link:
+                  {}
+                bluerov2/sonarforward_link:
+                  {}
+                bluerov2/thruster_0:
+                  {}
+                bluerov2/thruster_1:
+                  {}
+                bluerov2/thruster_2:
+                  {}
+                bluerov2/thruster_3:
+                  {}
+                bluerov2/thruster_4:
+                  {}
+                bluerov2/thruster_5:
+                  {}
+          sphere_target/base_footprint:
+            sphere_target/base_stabilized:
+              sphere_target/base_link:
+                sphere_target/base_link_ned:
+                  {}
+                sphere_target/gps_link:
+                  {}
+                sphere_target/imu_link:
+                  {}
+                sphere_target/pose_sensor_link_default:
+                  {}
+                sphere_target/pressure_link:
+                  {}
+                sphere_target/thruster_0:
+                  {}
+                sphere_target/thruster_1:
+                  {}
+                sphere_target/thruster_2:
+                  {}
+                sphere_target/thruster_3:
+                  {}
+                sphere_target/thruster_4:
+                  {}
+                sphere_target/thruster_5:
+                  {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Class: rviz/Marker
       Enabled: false
       Marker Topic: /bluerov2/current_velocity_marker
@@ -374,9 +517,9 @@ Visualization Manager:
         Axes Length: 1
         Axes Radius: 0.10000000149011612
         Color: 255; 25; 0
-        Head Length: 0.30000001192092896
+        Head Length: 0.20000000298023224
         Head Radius: 0.10000000149011612
-        Shaft Length: 1
+        Shaft Length: 0.5
         Shaft Radius: 0.05000000074505806
         Value: Arrow
       Topic: /bluerov2/pose_gt
@@ -435,7 +578,7 @@ Visualization Manager:
       Unreliable: false
       Value: false
     - Class: rviz/Image
-      Enabled: true
+      Enabled: false
       Image Topic: /bluerov2/camera_front/camera_image
       Max Value: 1
       Median window: 5
@@ -445,7 +588,7 @@ Visualization Manager:
       Queue Size: 2
       Transport Hint: compressed
       Unreliable: false
-      Value: true
+      Value: false
     - Class: rviz/Image
       Enabled: true
       Image Topic: /processed_image
@@ -457,6 +600,62 @@ Visualization Manager:
       Queue Size: 2
       Transport Hint: raw
       Unreliable: false
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: sonar scan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /bluerov2/sonar_forward
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 85; 255; 255
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: sonar-pc
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /sonar_pointcloud
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
       Value: true
   Enabled: true
   Global Options:
@@ -486,7 +685,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.9150840044021606
+      Distance: 3.5775930881500244
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -494,17 +693,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 0.29487788677215576
+        Y: -0.010476025752723217
+        Z: 0.15647414326667786
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.48539701104164124
+      Pitch: 0.814796507358551
       Target Frame: bluerov2/base_link
-      Yaw: 3.9453988075256348
+      Yaw: 4.485393047332764
     Saved: ~
 Window Geometry:
   Displays:
@@ -512,7 +711,7 @@ Window Geometry:
   Height: 1016
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd00000004000000000000027000000385fc020000000ffb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000014000000c7000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650000000294000001050000000000000000fb0000000a0049006d006100670065010000017d000002210000000000000000fb0000001800660072006f006e0074005f00630061006d00650072006101000001a3000001020000000000000000fb0000001800660072006f006e0074005f00630061006d006500720061010000026a0000012f0000000000000000fb0000001e00700072006f006300650073007300650064005f0069006d00610067006501000000e1000001ac0000001600fffffffb0000002c00630061006d006500720061005f00660072006f006d005f0063006f006d00700072006500730073006500640100000293000001060000001600fffffffb0000002000660072006f006e0074005f00630061006d006500720061005f00720061007700000002d1000000c80000001600ffffff00000001000001c100000385fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000001400000385000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007380000003efc0100000002fb0000000800540069006d00650100000000000007380000030700fffffffb0000000800540069006d00650100000000000004500000000000000000000004c20000038500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000027000000385fc0200000012fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000001400000212000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650000000294000001050000000000000000fb0000000a0049006d006100670065010000017d000002210000000000000000fb0000001800660072006f006e0074005f00630061006d00650072006101000001a3000001020000000000000000fb0000001800660072006f006e0074005f00630061006d006500720061010000026a0000012f0000000000000000fb0000001e00700072006f006300650073007300650064005f0069006d006100670065010000022c0000016d0000001600fffffffb0000002c00630061006d006500720061005f00660072006f006d005f0063006f006d00700072006500730073006500640000000178000001060000001600fffffffb0000002000660072006f006e0074005f00630061006d006500720061005f00720061007700000002d1000000c80000001600fffffffb0000002000660072006f006e0074005f00630061006d006500720061005f00720061007700000001f1000000cf0000000000000000fb0000001e00700072006f006300650073007300650064005f0069006d0061006700650100000284000001150000000000000000fb0000002c00630061006d006500720061005f00660072006f006d005f0063006f006d007000720065007300730065006400000002f2000000a7000000000000000000000001000001c100000385fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000001400000385000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007380000003efc0100000002fb0000000800540069006d00650100000000000007380000030700fffffffb0000000800540069006d00650100000000000004500000000000000000000004c20000038500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:

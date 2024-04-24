@@ -3,9 +3,12 @@ import rospy
 import cv2 as cv
 import numpy as np
 
+import laser_geometry.laser_geometry as lg
+
 from std_msgs.msg import Float32
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
+from sensor_msgs.msg import LaserScan, PointCloud2
 
 from typing import Tuple
 
@@ -13,6 +16,7 @@ from target_tracking.image_utils import img_error, \
     paint_centerlines_in_image, paint_x_in_image, paint_img_errors, paint_circles_in_image
 
 from target_tracking.target_utils import find_targets
+from target_tracking.sonar_utils import SonarProcessor
 
 from target_tracking.spherepose import SpherePose
 
@@ -22,13 +26,15 @@ class TargetDetectorNode:
         rospy.loginfo("Starting TargetDetectorNode as target_detector.")
 
         self.cv_bridge = CvBridge()
-
+        self.sonar_processor = SonarProcessor(0.0, 5.0, -5.0, 5.0)
         self.sphere_pos_estimator = SpherePose()
-
         self.start_ros_interfaces()
     
     def start_ros_interfaces(self):
         self.image_sub = rospy.Subscriber("/bluerov2/camera_front/camera_image", Image, self.image_callback)
+        self.sonar_sub = rospy.Subscriber("/bluerov2/sonar_forward", LaserScan, self.sonar_callback)
+        
+        self.sonar_pc_pub = rospy.Publisher("/sonar_pointcloud", PointCloud2, queue_size=1)
         self.horizontal_error_pub = rospy.Publisher("/horizontal_error", Float32, queue_size=1)
         self.vertical_error_pub = rospy.Publisher("/vertical_error", Float32, queue_size=1)
         self.x_dist_pub = rospy.Publisher("/x_dist", Float32, queue_size=1)
@@ -54,6 +60,14 @@ class TargetDetectorNode:
         self.z_dist_pub.publish(error_z)
 
         self.post_process_image(rgb, targets)
+
+    def sonar_callback(self, sonar_msg: LaserScan):
+        rospy.loginfo_once("Received first sonar message.")
+        rospy.loginfo_once("Not processing SONAR data for now")
+        # Process sonar data
+        # pc2_msg = self.sonar_processor.process_sonar_data(sonar_msg)
+
+        # self.sonar_pc_pub.publish(pc2_msg)
 
     def post_process_image(self, image: np.ndarray, targets:np.ndarray)->np.ndarray:
         # Publish processed image for visual validation
