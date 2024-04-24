@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="red_ball">
+  <link name="world"/>
+
+  <!-- Define material properties -->
+  <xacro:property name="red" value="1 0 0 1"/>
+
+  <!-- Define link for the ball -->
+  <link name="ball_link">
+    <!-- Add visual for the ball -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <material name="red">
+        <color rgba="${red}"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Define joint for the ball -->
+  <joint name="ball_joint" type="fixed">
+    <parent link="world"/>
+    <child link="ball_link"/>
+    <origin xyz="0 0 1" rpy="0 0 0"/>
+  </joint>
+
+</robot>
