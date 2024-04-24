@@ -1,6 +1,6 @@
 <launch>
     <!-- Flag to start recoding a rosbag  -->
-    <arg name="gui" default="true"/>
+    <arg name="gazebo_gui" default="true"/>
 
     <!-- Initial position and heading of the vehicle (wrt Gazebo's inertial frame)  -->
     <arg name="x" default="0"/>
@@ -14,7 +14,7 @@
     
     <!-- Initialize the Gazebo world  -->
     <include file="$(find bluerov2_description)/launch/bridge.launch">
-        <arg name="gui" default="$(arg gui)"/>
+        <arg name="gui" default="$(arg gazebo_gui)"/>
     </include>
 
     <!-- Add the BlueROV2 vehicle to the world  -->
