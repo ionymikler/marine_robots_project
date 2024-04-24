@@ -45,20 +45,23 @@ class ControlNode():
     def __init__(self) -> None:
         self.pv_z = 0
         self.pv_y = 0
+        self.pv_dist = 0
+
         rospy.init_node('pose_control_node', anonymous=True)
 
         self.PID_z = PIDController([0.002, 0, 0])
         self.PID_y = PIDController([0.004, 0, 0.0001])
+        self.PID_dist = PIDController([0.002, 0, 0])
 
         rospy.Subscriber('/vertical_error', Float32, self.error_callback_z)
         rospy.Subscriber('/horizontal_error', Float32, self.error_callback_y)
-
+        rospy.Subscriber('/x_dist', Float32, self.error_callback_dist)
 
         self.pub = rospy.Publisher('bluerov2/cmd_vel', Twist, queue_size=10)
 
         self.rate = rospy.Rate(50)
 
-        rospy.loginfo("Control Node Initialized 000")
+        rospy.loginfo("Control Node Initialized")
     
     def error_callback_z(self, data):
         rospy.loginfo_once("Z error received")
@@ -67,6 +70,10 @@ class ControlNode():
     def error_callback_y(self, data):
         self.pv_y = data.data
         rospy.loginfo_once("Y error received")
+
+    def error_callback_dist(self, data):
+        self.pv_dist = data.data
+        rospy.loginfo_once("Distance error received")
     
     def control_publisher(self):
         while not rospy.is_shutdown():
@@ -74,6 +81,7 @@ class ControlNode():
 
             twist_msg.linear.z = self.PID_z.calcPID(0, self.pv_z)
             twist_msg.angular.z = self.PID_y.calcPID(0, self.pv_y)
+            twist_msg.linear.x = self.PID_dist.calcPID(2, self.pv_dist)
 
             self.pub.publish(twist_msg)
 
