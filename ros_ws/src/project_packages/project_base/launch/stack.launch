@@ -2,10 +2,10 @@
     <!-- PERCEPTION -->
     <!-- ARGUMENTS -->
     <!-- NODES and LAUNCH FILES -->
-    <node name="visual_detection" pkg="target_tracking" type="visual_detection.py" output="screen">
-        </node>    
+    <node name="visual_detection" pkg="target_tracking" type="visual_detection.py" output="screen"> </node>    
 
     <!-- CONTROL -->
+    <node name="pose_control" pkg="position_control" type="pose_control.py" output="screen"> </node>    
     <!-- ARGUMENTS -->
     
     <!-- OTHERS -->

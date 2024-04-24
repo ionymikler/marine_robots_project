@@ -5,13 +5,10 @@
     <arg name="stack" default="true" />
 
     <!-- NODES and LAUNCH FILES --> 
-    <include file="$(find project_base)/launch/simulation_base.launch" if="$(arg simulation)">
-        </include>
+    <include file="$(find project_base)/launch/simulation_base.launch" if="$(arg simulation)"> </include>
 
     <!-- Project stack -->
-    <include if="$(arg stack)" file="$(find project_base)/launch/stack.launch">
-        
-    </include>
+    <include if="$(arg stack)" file="$(find project_base)/launch/stack.launch"> </include>
     
     <!-- OTHERS -->
     <!-- ARGUMENTS -->
