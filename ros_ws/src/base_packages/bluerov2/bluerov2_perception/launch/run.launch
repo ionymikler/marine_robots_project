@@ -1,0 +1,68 @@
+<launch>
+    <!-- Flag to start recoding a rosbag  -->
+    <arg name="gui" default="true"/>
+    <arg name="scenario" default="default"/>
+    <arg name="three_dimension" default="false"/>
+
+    <!-- Initial position and heading of the vehicle (wrt Gazebo's inertial frame)  -->
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="-23.0"/>
+    <arg name="yaw" default="0.0"/>
+
+    <arg name="use_ned_frame" default="true"/>
+
+    <arg name="fiducial_correction" default="false"/>
+
+    <!-- Initialize the Gazebo world  -->
+    <include file="$(find bluerov2_perception)/launch/bridge.launch">
+        <arg name="gui" default="$(arg gui)"/>
+        <arg name="scenario" default="$(arg scenario)"/>
+    </include>
+
+    <!-- Add the BlueROV2 vehicle to the world  -->
+    <include file="$(find bluerov2_perception)/launch/upload.launch">
+        <arg name="x" default="$(arg x)"/>
+        <arg name="y" default="$(arg y)"/>
+        <arg name="z" default="$(arg z)"/>
+        <arg name="yaw" default="$(arg yaw)"/>
+        <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+        <arg name="gazebo_tf" value="false"/>
+    </include>
+
+    <!-- Start the PID controller with its default parameters for the bluerov2 vehicle  -->
+    <include file="$(find bluerov2_control)/launch/rov_pid_controller.launch"> 
+        <arg name="uuv_name" value="bluerov2"/> 
+        <arg name="model_name" value="bluerov2"/> 
+        <arg name="use_ned_frame" value="$(arg use_ned_frame)"/> 
+    </include> 
+
+    <group if="$(arg fiducial_correction)">
+        <include file="$(find bluerov2_perception)/launch/aruco_detect.launch"/>
+        <include file="$(find bluerov2_perception)/launch/fiducial_slam.launch"/>
+        <node pkg="robot_localization" type="ekf_localization_node" name="ekf_state_estimator" clear_params="true">
+            <rosparam command="load" file="$(find bluerov2_perception)/config/ekf_params_with_fiducial_3d.yaml" if="$(arg three_dimension)"/>
+            <rosparam command="load" file="$(find bluerov2_perception)/config/ekf_params_with_fiducial.yaml" unless="$(arg three_dimension)"/>
+        </node>
+    </group>
+
+    <group unless="$(arg fiducial_correction)">
+        <node pkg="robot_localization" type="ekf_localization_node" name="ekf_state_estimator" clear_params="true">
+            <rosparam command="load" file="$(find bluerov2_perception)/config/ekf_params_imu_only_3d.yaml" if="$(arg three_dimension)"/>
+            <rosparam command="load" file="$(find bluerov2_perception)/config/ekf_params_imu_only.yaml" unless="$(arg three_dimension)"/>
+        </node>
+    </group>
+
+    <node pkg="tf" type="static_transform_publisher" name="world0_to_world_tf_publisher" args="0 0 -23 0 0 0 world odom 100" />
+    <node pkg="bluerov2_perception" type="pressure_to_depth.py" name="pressure_to_depth" output="screen" />
+      
+  <!-- Define parameter for red ball URDF -->
+  <!--param name="red_ball" command="$(find xacro)/xacro '$(find bluerov2_perception)/urdf/red_ball.xacro' inorder"/-->
+      <!-- Spawn the red ball -->
+  <!--node name="spawn_red_ball" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-urdf -param red_ball -model red_ball"/-->
+    
+    <!-- Start RViz  -->
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find bluerov2_perception)/rviz/bluerov2_perception.rviz"/>
+    
+</launch>
