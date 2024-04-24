@@ -16,7 +16,7 @@ def detect_circles(image: np.ndarray)->np.ndarray:
     circles = cv.HoughCircles(image=gray, method=cv.HOUGH_GRADIENT,dp= 1,
                                 minDist= rows / 8,
                                 param1=100, param2=30,
-                                minRadius=1, maxRadius=int(0.8*rows)
+                                minRadius=1, maxRadius=int(0.4*rows)
                                 )
     
     return np.array([]) if circles is None else circles

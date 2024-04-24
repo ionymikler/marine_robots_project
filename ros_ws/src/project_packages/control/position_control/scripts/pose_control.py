@@ -50,8 +50,9 @@ class ControlNode():
         rospy.init_node('pose_control_node', anonymous=True)
 
         self.PID_z = PIDController([0.002, 0, 0])
-        self.PID_y = PIDController([0.004, 0, 0.0001])
-        self.PID_dist = PIDController([0.002, 0, 0])
+        #self.PID_y = PIDController([0.004, 0, 0.0001])
+        self.PID_y = PIDController([0.002, 0, 0])
+        self.PID_dist = PIDController([2, 0, 0])
 
         rospy.Subscriber('/vertical_error', Float32, self.error_callback_z)
         rospy.Subscriber('/horizontal_error', Float32, self.error_callback_y)
@@ -81,8 +82,7 @@ class ControlNode():
 
             twist_msg.linear.z = self.PID_z.calcPID(0, self.pv_z)
             twist_msg.angular.z = self.PID_y.calcPID(0, self.pv_y)
-            twist_msg.linear.x = self.PID_dist.calcPID(2, self.pv_dist)
-
+            twist_msg.linear.x = -(self.PID_dist.calcPID(1, self.pv_dist))
             self.pub.publish(twist_msg)
 
             self.rate.sleep()
