@@ -14,6 +14,8 @@ from target_tracking.image_utils import img_error, \
 
 from target_tracking.target_utils import find_targets
 
+from target_tracking.spherepose import SpherePose
+
 class TargetDetectorNode:
     def __init__(self):
         rospy.init_node("target_detector")
@@ -21,12 +23,17 @@ class TargetDetectorNode:
 
         self.cv_bridge = CvBridge()
 
+        self.sphere_pos_estimator = SpherePose()
+
         self.start_ros_interfaces()
     
     def start_ros_interfaces(self):
         self.image_sub = rospy.Subscriber("/bluerov2/camera_front/camera_image", Image, self.image_callback)
         self.horizontal_error_pub = rospy.Publisher("/horizontal_error", Float32, queue_size=1)
         self.vertical_error_pub = rospy.Publisher("/vertical_error", Float32, queue_size=1)
+        self.x_dist_pub = rospy.Publisher("/x_dist", Float32, queue_size=1)
+        self.y_dist_pub = rospy.Publisher("/y_dist", Float32, queue_size=1)
+        self.z_dist_pub = rospy.Publisher("/z_dist", Float32, queue_size=1)
         self.processed_image_pub = rospy.Publisher("/processed_image", Image, queue_size=1)
     
     def image_callback(self, image_msg: Image):
@@ -35,10 +42,16 @@ class TargetDetectorNode:
         rgb = cv.cvtColor(image_og, cv.COLOR_BGR2RGB)
 
         targets, error_h, error_v = self.find_target(rgb)
+
+        error_x, error_y, error_z = self.sphere_pos_estimator.update_pose(rgb)
+
         rospy.loginfo_throttle(0.5, f"Errors: h={error_h}, v={error_v}")
         # Publish errors
         self.horizontal_error_pub.publish(error_h)
         self.vertical_error_pub.publish(error_v)
+        self.x_dist_pub.publish(error_x)
+        self.y_dist_pub.publish(error_y)
+        self.z_dist_pub.publish(error_z)
 
         self.post_process_image(rgb, targets)
 

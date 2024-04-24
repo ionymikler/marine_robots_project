@@ -2,10 +2,13 @@
     <!-- SIMULATION -->
     <!-- ARGUMENTS -->
     <arg name="simulation" default="true" />
+    <arg name="gazebo_gui" default="false" />
     <arg name="stack" default="true" />
 
     <!-- NODES and LAUNCH FILES --> 
-    <include file="$(find project_base)/launch/simulation_base.launch" if="$(arg simulation)"> </include>
+    <include file="$(find project_base)/launch/simulation_base.launch" if="$(arg simulation)">
+        <arg name="gazebo_gui" value="$(arg gazebo_gui)" />
+    </include>
 
     <!-- Project stack -->
     <include if="$(arg stack)" file="$(find project_base)/launch/stack.launch"> </include>
